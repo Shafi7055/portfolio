@@ -1,0 +1,501 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Ismail Hossain Shafi | AI-Enthusiast Engineer Portfolio</title>
+    <!-- Google Fonts & Smooth Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f9fafc;
+            color: #1f2937;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* animated gradient background wrapper */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(circle at 20% 30%, rgba(215, 228, 255, 0.6), rgba(240, 245, 255, 0.9));
+        }
+
+        .gradient-bg::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: conic-gradient(from 90deg at 50% 50%, #c084fc20, #60a5fa20, #34d39920, #fbbf2420, #c084fc20);
+            animation: slowSpin 28s infinite linear;
+            z-index: -1;
+        }
+
+        @keyframes slowSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* main container */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            backdrop-filter: blur(0px);
+        }
+
+        /* Card style with glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 28px 40px -16px rgba(0, 0, 0, 0.15);
+            border-color: rgba(255,255,255,0.8);
+        }
+
+        /* header section */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem 2rem;
+        }
+
+        .profile-intro h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e2b6e, #3b82f6, #8b5cf6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(59,130,246,0.15);
+            backdrop-filter: blur(4px);
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2563eb;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(59,130,246,0.3);
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            background: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            transition: all 0.2s;
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px solid #e9eef3;
+        }
+
+        .contact-item i {
+            font-size: 1.2rem;
+            color: #3b82f6;
+        }
+
+        .contact-item:hover {
+            background: #ffffff;
+            border-color: #3b82f6;
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        /* skills & sections grid */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: linear-gradient(120deg, #1f2937, #4b5563);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+            border-left: 5px solid #3b82f6;
+            padding-left: 1rem;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .skill-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(4px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            margin: 0.35rem;
+            transition: all 0.2s;
+            border: 1px solid #ffffff80;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .skill-pill i {
+            color: #3b82f6;
+            font-size: 0.9rem;
+        }
+
+        .skill-pill:hover {
+            background: white;
+            transform: translateY(-2px);
+            border-color: #93c5fd;
+        }
+
+        .list-educ {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-educ li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.7rem;
+            font-weight: 500;
+        }
+
+        .list-educ i {
+            color: #3b82f6;
+            width: 1.4rem;
+            margin-top: 0.2rem;
+        }
+
+        .other-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            justify-content: space-between;
+        }
+
+        .stat-badge {
+            background: #ffffffcc;
+            backdrop-filter: blur(4px);
+            border-radius: 1.5rem;
+            padding: 1rem 1.5rem;
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.7);
+        }
+
+        /* animated underline effect */
+        .animated-link {
+            position: relative;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* footer */
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            font-size: 0.85rem;
+            color: #4b5563;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1.5rem;
+            }
+            .profile-intro h1 {
+                font-size: 2.2rem;
+            }
+            .container {
+                padding: 1rem;
+            }
+        }
+        .hover-glow {
+            transition: all 0.2s;
+        }
+        .wordpress-stack {
+            background: linear-gradient(145deg, #ffffff, #f5f7fe);
+        }
+        hr {
+            margin: 1rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+        }
+        .icon-circle {
+            width: 38px;
+            height: 38px;
+            background: rgba(59,130,246,0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<div class="gradient-bg"></div>
+<div class="container">
+    <!-- Hero Section with Glass Card -->
+    <div class="glass-card hero">
+        <div class="profile-intro">
+            <div class="badge"><i class="fas fa-terminal"></i> BSc in ICT | AI Enthusiast</div>
+            <h1>Ismail Hossain Shafi</h1>
+            <p style="font-size:1.1rem; margin-top:0.4rem; color:#334155;">BSc in Engineering in Information & Communication Technology</p>
+            <div class="contact-grid" style="margin-top: 1.2rem;">
+                <a href="mailto:muhammed.mihsshafi05@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> muhammed.mihsshafi05</a>
+                <a href="tel:01319065588" class="contact-item"><i class="fas fa-phone-alt"></i> 01319065588</a>
+                <a href="https://github.com/Shafi7055" target="_blank" class="contact-item"><i class="fab fa-github"></i> github/Shafi7055</a>
+                <a href="https://www.linkedin.com/in/muhammed-shafi-955b00364" target="_blank" class="contact-item"><i class="fab fa-linkedin-in"></i> LinkedIn Profile</a>
+            </div>
+        </div>
+        <div style="background: radial-gradient(ellipse at 30% 40%, #eef2ff, #ffffff); padding: 0.8rem 1.5rem; border-radius: 2rem; text-align: center;">
+            <i class="fas fa-robot" style="font-size: 2rem; color: #3b82f6;"></i>
+            <p style="font-weight:600; margin-top:0.5rem;">AI & Next‑Gen Tools</p>
+            <small>Claude · Antigravity · LLMs</small>
+        </div>
+    </div>
+
+    <!-- Two Column: Skills & Core Strengths -->
+    <div class="grid-2col">
+        <!-- Technical Skills Card -->
+        <div class="glass-card" style="padding: 1.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                <div class="icon-circle"><i class="fas fa-code"></i></div>
+                <h2 class="section-title" style="margin-bottom:0; border-left:0; padding-left:0;">Technical Arsenal</h2>
+            </div>
+            <div style="margin-top: 0.5rem;">
+                <div><strong style="font-weight:700;">🧠 Programming Languages</strong></div>
+                <div style="margin: 0.8rem 0 1rem 0;">
+                    <span class="skill-pill"><i class="fab fa-java"></i> Java</span>
+                    <span class="skill-pill"><i class="fas fa-c++"></i> C++</span>
+                    <span class="skill-pill"><i class="fab fa-html5"></i> HTML5</span>
+                    <span class="skill-pill"><i class="fab fa-css3-alt"></i> CSS3</span>
+                </div>
+                <div><strong style="font-weight:700;">🌐 Web Development</strong></div>
+                <div style="margin: 0.8rem 0 1rem 0;">
+                    <span class="skill-pill"><i class="fab fa-html5"></i> HTML5/CSS3</span>
+                    <span class="skill-pill"><i class="fab fa-wordpress"></i> WordPress</span>
+                    <span class="skill-pill"><i class="fas fa-plug"></i> Elementor</span>
+                    <span class="skill-pill"><i class="fas fa-store"></i> WooCommerce</span>
+                    <span class="skill-pill"><i class="fab fa-wix"></i> Wix</span>
+                </div>
+                <div><strong style="font-weight:700;">📱 Mobile & DevOps</strong></div>
+                <div style="margin: 0.8rem 0 1rem 0;">
+                    <span class="skill-pill"><i class="fab fa-flutter"></i> Flutter</span>
+                    <span class="skill-pill"><i class="fab fa-git-alt"></i> Git & GitHub</span>
+                </div>
+                <div><strong style="font-weight:700;">⚙️ CMS & Plugins Expert</strong></div>
+                <div>
+                    <span class="skill-pill"><i class="fas fa-cart-shopping"></i> WooCommerce</span>
+                    <span class="skill-pill"><i class="fas fa-paint-brush"></i> Elementor Pro</span>
+                    <span class="skill-pill"><i class="fab fa-wix"></i> Wix Studio</span>
+                    <span class="skill-pill"><i class="fas fa-magic"></i> Page Builders</span>
+                </div>
+            </div>
+            <hr>
+            <div><i class="fas fa-brain" style="color:#3b82f6;"></i> <strong>Problem solving · Algorithmic mindset</strong> — tackling real-world challenges with clean logic.</div>
+        </div>
+
+        <!-- AI Enthusiast & Other Skills Card -->
+        <div class="glass-card" style="padding: 1.8rem;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                <div class="icon-circle"><i class="fas fa-microchip"></i></div>
+                <h2 class="section-title" style="margin-bottom:0; border-left:0; padding-left:0;">AI & Future Tech</h2>
+            </div>
+            <div>
+                <div class="skill-pill" style="background: linear-gradient(115deg, #eef2ff, #ffffff);"><i class="fas fa-robot"></i> Claude AI</div>
+                <div class="skill-pill" style="background: linear-gradient(115deg, #eef2ff, #ffffff);"><i class="fas fa-rocket"></i> Antigravity AI</div>
+                <div class="skill-pill" style="background: linear-gradient(115deg, #eef2ff, #ffffff);"><i class="fas fa-chalkboard-user"></i> LLM Fine-tuning · Prompt Engineering</div>
+                <div class="skill-pill" style="background: linear-gradient(115deg, #eef2ff, #ffffff);"><i class="fas fa-chart-line"></i> Generative AI Exploration</div>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <p><i class="fas fa-graduation-cap"></i> <strong>Continuous learner</strong> — integrating cutting-edge AI agents into web & app ecosystems.</p>
+                <div style="margin-top: 0.8rem; background: rgba(59,130,246,0.07); border-radius: 1.2rem; padding: 0.8rem;">
+                    <i class="fas fa-lightbulb"></i> “Building next-gen solutions with AI + full-stack creativity”
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detailed Expertise + Education + Git / Plugins -->
+    <div class="grid-2col">
+        <!-- Education & Degree card -->
+        <div class="glass-card" style="padding: 1.8rem;">
+            <h2 class="section-title"><i class="fas fa-university"></i> Education</h2>
+            <ul class="list-educ">
+                <li><i class="fas fa-graduation-cap"></i> <strong>BSc in Engineering in ICT</strong> — Information & Communication Technology</li>
+                <li><i class="fas fa-certificate"></i> Specialized in Web Technologies, Mobile App Dev, AI Integration</li>
+                <li><i class="fas fa-laptop-code"></i> Completed advanced coursework: Data Structures, Web Engineering, HCI</li>
+            </ul>
+            <div style="margin-top: 1rem;">
+                <span class="skill-pill"><i class="fas fa-globe"></i> Git & GitHub workflow</span>
+                <span class="skill-pill"><i class="fas fa-branch"></i> Version control expert</span>
+            </div>
+        </div>
+
+        <!-- Professional Highlights: CMS & Full Stack  -->
+        <div class="glass-card" style="padding: 1.8rem;">
+            <h2 class="section-title"><i class="fas fa-crown"></i> Core Competencies</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+                <div style="flex:1; min-width:150px;">
+                    <i class="fas fa-palette"></i> <strong>Web Design</strong><br>
+                    <small>HTML/CSS, WordPress, Wix, Elementor</small>
+                </div>
+                <div style="flex:1; min-width:150px;">
+                    <i class="fas fa-mobile-alt"></i> <strong>Flutter Dev</strong><br>
+                    <small>Cross-platform apps, UI/UX integration</small>
+                </div>
+                <div style="flex:1; min-width:150px;">
+                    <i class="fas fa-chart-simple"></i> <strong>E‑commerce</strong><br>
+                    <small>WooCommerce · Payment gateways</small>
+                </div>
+            </div>
+            <hr>
+            <div><i class="fas fa-cogs"></i> <strong>Other stacks:</strong> SEO basics, performance optimization, responsive design, CMS customization.</div>
+        </div>
+    </div>
+
+    <!-- Special Grid: dynamic plugins & wordpress  -->
+    <div class="glass-card" style="padding: 1.8rem; margin-bottom: 2rem;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+            <div>
+                <h2 class="section-title" style="margin-bottom:0.5rem;"><i class="fab fa-wordpress"></i> WordPress & CMS Mastery</h2>
+                <p>Building dynamic, scalable websites with drag‑drop builders, custom plugins, and WooCommerce stores.</p>
+            </div>
+            <div><i class="fas fa-shopping-cart" style="font-size: 2.5rem; color: #7c3aed;"></i></div>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.5rem 0 0.5rem;">
+            <span class="skill-pill"><i class="fab fa-elementor"></i> Elementor Pro</span>
+            <span class="skill-pill"><i class="fas fa-woo"></i> WooCommerce</span>
+            <span class="skill-pill"><i class="fab fa-wix"></i> Wix Advanced</span>
+            <span class="skill-pill"><i class="fas fa-database"></i> Custom Post Types</span>
+            <span class="skill-pill"><i class="fas fa-plug"></i> Plugin Integration</span>
+        </div>
+    </div>
+
+    <!-- Flutter + Git + AI Tools banner with animation -->
+    <div class="other-section" style="margin-bottom: 2rem;">
+        <div class="stat-badge glass-card" style="text-align: left;">
+            <i class="fab fa-flutter" style="font-size: 1.8rem; color:#02569b;"></i>
+            <h3 style="margin: 0.5rem 0;">Flutter Dev</h3>
+            <p>Modern cross-platform apps with smooth UI & state management. Building responsive & native-like experiences.</p>
+        </div>
+        <div class="stat-badge glass-card" style="text-align: left;">
+            <i class="fab fa-github" style="font-size: 1.8rem;"></i>
+            <h3 style="margin: 0.5rem 0;">Git & GitHub</h3>
+            <p>Version control, collaboration, open-source contributions. Efficient branching & CI/CD mindset.</p>
+        </div>
+        <div class="stat-badge glass-card" style="text-align: left;">
+            <i class="fas fa-brain" style="font-size: 1.8rem; color:#8b5cf6;"></i>
+            <h3 style="margin: 0.5rem 0;">AI Enthusiast</h3>
+            <p>Actively learning Claude, Antigravity, LLM integrations. Leveraging AI to accelerate development & problem-solving.</p>
+        </div>
+    </div>
+
+    <!-- Dynamic Portfolio quote + cta -->
+    <div class="glass-card" style="padding: 1.5rem 2rem; text-align: center; background: rgba(255,255,255,0.65);">
+        <i class="fas fa-quote-left" style="font-size: 1.8rem; opacity: 0.6; color:#3b82f6;"></i>
+        <p style="font-size: 1.2rem; font-weight: 500; max-width: 700px; margin: 0.8rem auto;">Blending engineering precision with creative AI — passionate about crafting impactful digital solutions across web, mobile, and emerging tech.</p>
+        <div style="margin-top: 1.2rem;">
+            <a href="https://github.com/Shafi7055" target="_blank" style="text-decoration:none; margin:0 0.6rem;" class="contact-item"><i class="fab fa-github"></i> Explore GitHub</a>
+            <a href="https://www.linkedin.com/in/muhammed-shafi-955b00364" target="_blank" style="text-decoration:none; margin:0 0.6rem;" class="contact-item"><i class="fab fa-linkedin"></i> Let's Connect</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Ismail Hossain Shafi — BSc in ICT | modern portfolio crafted with <i class="fas fa-heart" style="color:#ef4444;"></i> & gradient-driven design</p>
+        <p style="margin-top: 8px; font-size: 0.75rem;">Available for collaboration | Email: muhammed.mihsshafi05@gmail.com | Phone: 01319065588</p>
+    </footer>
+</div>
+
+<!-- subtle entrance animations via CSS and Intersection Observer optional (just for dynamic feel) -->
+<script>
+    // Small script to add on-view animation effect – just enhance dynamic feel
+    const cards = document.querySelectorAll('.glass-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0px)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+    
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(12px)';
+        card.style.transition = 'opacity 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.5s ease';
+        observer.observe(card);
+    });
+    // set hero visible immediately
+    const heroCard = document.querySelector('.hero');
+    if(heroCard) {
+        heroCard.style.opacity = '1';
+        heroCard.style.transform = 'translateY(0px)';
+    }
+    // for contact and stat badges optional
+    const badgesExtra = document.querySelectorAll('.stat-badge, .other-section .glass-card, .skill-pill');
+    // no flicker
+    document.querySelectorAll('.contact-item').forEach(link => {
+        link.addEventListener('mouseenter', (e) => {
+            e.currentTarget.style.transition = 'all 0.2s';
+        });
+    });
+</script>
+</body>
+</html>
